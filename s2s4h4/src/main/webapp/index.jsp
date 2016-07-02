@@ -21,7 +21,9 @@
 	src="jslib/util/syutil.js"></script>
 <jsp:include page="jsp/user/loggin.jsp"></jsp:include>
 <jsp:include page="jsp/user/reg.jsp"></jsp:include>
+<script type="text/javascript">
 
+</script>
 </head>
 <body class="easyui-layout">
 	<div data-options="region:'north',border:false"

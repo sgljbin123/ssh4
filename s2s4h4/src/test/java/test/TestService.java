@@ -23,7 +23,7 @@ public class TestService {
 		u.setName("23s3");
 		u.setPassword("123asdas#d1454562@487843");
 		u.setCreatetime(new Date());
-		userService.saveUser(u);
+//		userService.saveUser(u);
 //		u = userService.findUser("lilei");
 //		userService.delUser("123");
 //		logger.info(u.getName());

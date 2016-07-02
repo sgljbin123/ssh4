@@ -77,7 +77,7 @@ public class DbUser implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@Column(name = "PASSWORD", nullable = false, length = 20)
+	@Column(name = "PASSWORD", nullable = false, length = 50)
 	public String getPassword() {
 		return this.password;
 	}

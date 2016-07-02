@@ -18,15 +18,15 @@ public class TestService {
 	public void test(){
 		ApplicationContext ac = new ClassPathXmlApplicationContext(new String[]{"classpath:spring.xml"});
 		UserServiceI userService = (UserServiceI) ac.getBean("userService");
-		userService.test();
+//		userService.test();
 		DbUser u = new DbUser();
-//		u.setName("lil2e2asdi3");
-//		u.setPassword("123123");
-//		u.setCreatetime(new Date());
-//		userService.saveUser(u);
-		u = userService.findUser("lilei");
+		u.setName("23s3");
+		u.setPassword("123asdas#d1454562@487843");
+		u.setCreatetime(new Date());
+		userService.saveUser(u);
+//		u = userService.findUser("lilei");
 //		userService.delUser("123");
-		logger.info(u.getName());
+//		logger.info(u.getName());
 //		
 	}
 }

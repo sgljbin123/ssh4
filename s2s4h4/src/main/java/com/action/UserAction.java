@@ -1,6 +1,7 @@
 package com.action;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import com.drivenModel.UserModel;
 import com.model.DbUser;
 import com.opensymphony.xwork2.ModelDriven;
 import com.service.UserServiceI;
+import com.utils.EncryptAndDecrypt;
 
 
 public class UserAction extends BaseAction implements ModelDriven<UserModel>{
@@ -61,13 +63,13 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel>{
 		DbUser u = new DbUser();
 		Map<String , Object> userMap = new HashMap<>();
 		u = userService.findUser(userModel.getIndex_reg_name());
-		
+		logger.info(userModel.getIndex_reg_name());
 		if (u != null) {
 			userMap.put("success", false);
 			userMap.put("message", "账号已存在，注册失败");
 		} else {
 			try {
-				userService.saveUser(u);
+				userService.saveUser(userModel);
 				userMap.put("success", true);
 				userMap.put("message", "注册成功");
 
@@ -89,7 +91,7 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel>{
 			userMap.put("success", false);
 			userMap.put("message", "账号不存在，请重新输入");
 		} else {
-			if (userModel.getIndex_loggin_password().equals(u.getPassword())) {
+			if (userModel.getIndex_loggin_password().equals(EncryptAndDecrypt.decrypt(u.getPassword()))) {
 				userMap.put("success", true);
 				userMap.put("message", "登陆成功，正在跳转页面");
 			} else {

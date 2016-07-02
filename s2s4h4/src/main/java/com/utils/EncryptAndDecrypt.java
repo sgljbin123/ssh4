@@ -21,7 +21,7 @@ public class EncryptAndDecrypt {
 		return DesUtil.bytesToHexString(encrypt);
 	}
 	
-	public String Decrypt(String encrypt){
+	public static String decrypt(String encrypt){
 		return DesUtil.tDesDecrypt(DesUtil.hexStr2ByteArray(encrypt), ConstantUtil.DES_KEY, "ECB", "NoPadding");
 	}
 }

@@ -1,6 +1,7 @@
 package com.service.impl;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dao.UserDaoI;
+import com.drivenModel.UserModel;
 import com.model.DbUser;
 import com.service.UserServiceI;
 import com.utils.EncryptAndDecrypt;
@@ -31,10 +33,14 @@ public class UserServiceImpl implements UserServiceI {
 	}
 
 	@Override
-	public Serializable saveUser(DbUser u) {
+	public Serializable saveUser(UserModel userModel) {
+		
 		// TODO Auto-generated method stub
+		DbUser u = new DbUser();
+		u.setName(userModel.getIndex_reg_name());
 		logger.info(u.getName());
-		u.setPassword(EncryptAndDecrypt.encrypt(u.getPassword()));
+		u.setPassword(EncryptAndDecrypt.encrypt(userModel.getIndex_reg_password()));
+		u.setCreatetime(new Date());
 		return userDao.save(u);
 	}
 

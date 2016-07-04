@@ -61,7 +61,7 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel>{
 	public void saveUser() throws IOException {
 		UtUser u = new UtUser();
 		Map<String , Object> userMap = new HashMap<>();
-		u = userService.findUser(userModel.getIndex_reg_name());
+		u = userService.findUser(userModel.getIndex_reg_name(),userModel.getIndex_reg_password());
 		logger.info(userModel.getIndex_reg_name());
 		if (u != null) {
 			userMap.put("success", false);
@@ -84,19 +84,14 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel>{
 	@Action(value = "userLoggin")
 	public void userLoggin() throws IOException {
 		UtUser u = new UtUser();
-		u = userService.findUser(userModel.getIndex_loggin_name());
+		u = userService.findUser(userModel.getIndex_loggin_name(),userModel.getIndex_loggin_password());
 		Map<String , Object> userMap = new HashMap<>();
 		if (u == null) {
 			userMap.put("success", false);
-			userMap.put("message", "账号不存在，请重新输入");
+			userMap.put("message", "账号或密码不正确，请重新输入");
 		} else {
-			if (userModel.getIndex_loggin_password().equals(EncryptAndDecrypt.decrypt(u.getPassword()))) {
 				userMap.put("success", true);
 				userMap.put("message", "登陆成功，正在跳转页面");
-			} else {
-				userMap.put("success", false);
-				userMap.put("message", "密码错误");
-			}
 		}
 		writeToJSON(userMap);
 	}

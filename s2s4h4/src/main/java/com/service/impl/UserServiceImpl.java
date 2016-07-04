@@ -2,7 +2,9 @@ package com.service.impl;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,15 +47,19 @@ public class UserServiceImpl implements UserServiceI {
 	}
 
 	@Override
-	public UtUser findUser(String name) {
-		List<UtUser> DbuserList = userDao.find(name);
+	public UtUser findUser(String name,String password) {
+		logger.info("find user service");
+		String queryString = "from UtUser where name=? and password=?";
+		String[] paramMap = {name,EncryptAndDecrypt.encrypt(password)}; 
+		List<UtUser> DbuserList = userDao.findList(queryString,paramMap);
 		return  (DbuserList == null) || (DbuserList.size() == 0)?null:DbuserList.get(0);
 	}
 
 	@Override
 	public void delUser(String name) {
-		String querySql = "from DbUser where name = ?";
-		List<UtUser> DbuserList = userDao.find(querySql, name);
+		String queryString = "from UtUser where name =:name";
+		String[] paramMap={name};
+		List<UtUser> DbuserList = userDao.findList(queryString,paramMap);
 		userDao.deleteAll(DbuserList);
 	}
 

@@ -10,6 +10,6 @@ public interface UserServiceI {
 	
 	public void test();
 	public Serializable saveUser(UserModel u);
-	public UtUser findUser(String name);
+	public UtUser findUser(String name,String password);
 	public void delUser(String name);
 }

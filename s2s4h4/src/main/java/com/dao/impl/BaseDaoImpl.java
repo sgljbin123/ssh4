@@ -31,8 +31,8 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDaoI<T> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public T find(String queryString,Object[] values){
-		List<T> find = (List<T>) getHibernateTemplate().find(queryString, values);
+	public T find(String queryString, Object[] values){
+		List<T> find = (List<T>) getHibernateTemplate().find(queryString,values);
 		return (find == null || find.size()==0)?null:find.get(0);
 	}
 
@@ -51,9 +51,9 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDaoI<T> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> findList(String queryString, Object values) {
+	public List<T> findList(String queryString, Object[] values) {
 		// TODO Auto-generated method stub
-		List<T> find = (List<T>) getHibernateTemplate().find(queryString, values);
+		List<T> find = (List<T>) getHibernateTemplate().find(queryString,values);
 		return find;
 	}
 	@Override
@@ -94,6 +94,6 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDaoI<T> {
 		List find = getHibernateTemplate().find(queryString, values);
 		return (find == null || find.size()==0)?0:Integer.valueOf((String) find.get(0));
 	}
-	
+
 }
 

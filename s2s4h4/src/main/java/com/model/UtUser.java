@@ -17,8 +17,8 @@ import javax.persistence.UniqueConstraint;
  * DbUser entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "db_user", uniqueConstraints = @UniqueConstraint(columnNames = "NAME"))
-public class DbUser implements java.io.Serializable {
+@Table(name = "ut_user", uniqueConstraints = @UniqueConstraint(columnNames = "NAME"))
+public class UtUser implements java.io.Serializable {
 
 	// Fields
 
@@ -39,17 +39,17 @@ public class DbUser implements java.io.Serializable {
 	// Constructors
 
 	/** default constructor */
-	public DbUser() {
+	public UtUser() {
 	}
 
 	/** minimal constructor */
-	public DbUser(String name, String password) {
+	public UtUser(String name, String password) {
 		this.name = name;
 		this.password = password;
 	}
 
 	/** full constructor */
-	public DbUser(String name, String password, Date createtime, Date modifytime) {
+	public UtUser(String name, String password, Date createtime, Date modifytime) {
 		this.name = name;
 		this.password = password;
 		this.createtime = createtime;

@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.action.base.BaseAction;
 import com.drivenModel.UserModel;
-import com.model.DbUser;
+import com.model.UtUser;
 import com.opensymphony.xwork2.ModelDriven;
 import com.service.UserServiceI;
 import com.utils.EncryptAndDecrypt;
@@ -59,7 +59,7 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel>{
 
 	@Action(value = "saveUser")
 	public void saveUser() throws IOException {
-		DbUser u = new DbUser();
+		UtUser u = new UtUser();
 		Map<String , Object> userMap = new HashMap<>();
 		u = userService.findUser(userModel.getIndex_reg_name());
 		logger.info(userModel.getIndex_reg_name());
@@ -83,7 +83,7 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel>{
 
 	@Action(value = "userLoggin")
 	public void userLoggin() throws IOException {
-		DbUser u = new DbUser();
+		UtUser u = new UtUser();
 		u = userService.findUser(userModel.getIndex_loggin_name());
 		Map<String , Object> userMap = new HashMap<>();
 		if (u == null) {

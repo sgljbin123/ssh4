@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.dao.UserDaoI;
 import com.drivenModel.UserModel;
-import com.model.DbUser;
+import com.model.UtUser;
 import com.service.UserServiceI;
 import com.utils.EncryptAndDecrypt;
 
@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserServiceI {
 	public Serializable saveUser(UserModel userModel) {
 		
 		// TODO Auto-generated method stub
-		DbUser u = new DbUser();
+		UtUser u = new UtUser();
 		u.setName(userModel.getIndex_reg_name());
 		logger.info(u.getName());
 		u.setPassword(EncryptAndDecrypt.encrypt(userModel.getIndex_reg_password()));
@@ -45,15 +45,15 @@ public class UserServiceImpl implements UserServiceI {
 	}
 
 	@Override
-	public DbUser findUser(String name) {
-		List<DbUser> DbuserList = userDao.find(name);
+	public UtUser findUser(String name) {
+		List<UtUser> DbuserList = userDao.find(name);
 		return  (DbuserList == null) || (DbuserList.size() == 0)?null:DbuserList.get(0);
 	}
 
 	@Override
 	public void delUser(String name) {
 		String querySql = "from DbUser where name = ?";
-		List<DbUser> DbuserList = userDao.find(querySql, name);
+		List<UtUser> DbuserList = userDao.find(querySql, name);
 		userDao.deleteAll(DbuserList);
 	}
 

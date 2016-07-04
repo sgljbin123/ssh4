@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.model.DbUser;
+import com.model.UtUser;
 import com.service.UserServiceI;
 
 public class TestService {
@@ -19,7 +19,7 @@ public class TestService {
 		ApplicationContext ac = new ClassPathXmlApplicationContext(new String[]{"classpath:spring.xml"});
 		UserServiceI userService = (UserServiceI) ac.getBean("userService");
 //		userService.test();
-		DbUser u = new DbUser();
+		UtUser u = new UtUser();
 		u.setName("23s3");
 		u.setPassword("123asdas#d1454562@487843");
 		u.setCreatetime(new Date());

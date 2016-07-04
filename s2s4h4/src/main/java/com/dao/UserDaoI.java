@@ -2,8 +2,8 @@ package com.dao;
 
 import java.util.List;
 
-import com.model.DbUser;
+import com.model.UtUser;
 
-public interface UserDaoI extends BaseDaoI<DbUser>{
-	public List<DbUser> find(Object values);
+public interface UserDaoI extends BaseDaoI<UtUser>{
+	public List<UtUser> find(Object values);
 }

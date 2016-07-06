@@ -23,6 +23,10 @@ public class UtMenu implements java.io.Serializable {
 
 	// Fields
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private UtMenu utMemu;
 	private String text;

@@ -3,6 +3,7 @@ package com.dao.impl;
 import java.io.Serializable;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -16,6 +17,7 @@ import com.dao.BaseDaoI;
 @Repository("baseDao")
 public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDaoI<T> {
 
+	private Logger logger = Logger.getLogger(BaseDaoImpl.class);
 	
 	@Autowired  
     public void setSessionFactoryOverride(SessionFactory sessionFactory)  
@@ -26,6 +28,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDaoI<T> {
 	@Override
 	public Serializable save(T o) {
 		// TODO Auto-generated method stub
+		logger.info("into dao for save");
 		return getHibernateTemplate().save(o);
 		
 	}
@@ -92,6 +95,18 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDaoI<T> {
 		queryString = sql.append(queryString).toString();
 		List find = getHibernateTemplate().find(queryString, values);
 		return (find == null || find.size()==0)?0:Integer.valueOf((String) find.get(0));
+	}
+	public List<T> query(final String queryString) {
+		// TODO Auto-generated method stub
+		List list = getHibernateTemplate().execute(new HibernateCallback<List>()
+		    {
+		     @Override
+		 public List<T> doInHibernate(Session session) {
+		       Query query = session.createQuery(queryString);
+		        return query.list();
+	     }
+		    });
+	     return list;
 	}
 
 }

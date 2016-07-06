@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.model.UtUser;
+import com.service.MenuServiceI;
 import com.service.UserServiceI;
 
 public class TestService {
@@ -17,16 +18,8 @@ public class TestService {
 	@Test
 	public void test(){
 		ApplicationContext ac = new ClassPathXmlApplicationContext(new String[]{"classpath:spring.xml"});
-		UserServiceI userService = (UserServiceI) ac.getBean("userService");
-//		userService.test();
-		UtUser u = new UtUser();
-		u.setName("23s3");
-		u.setPassword("123asdas#d1454562@487843");
-		u.setCreatetime(new Date());
-//		userService.saveUser(u);
-//		u = userService.findUser("lilei");
-//		userService.delUser("123");
-//		logger.info(u.getName());
+		MenuServiceI menuService = (MenuServiceI) ac.getBean("menuService");
+	
 //		
 	}
 }

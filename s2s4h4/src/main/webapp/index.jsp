@@ -30,7 +30,7 @@
 		<div class="easyui-accordion" data-options="fit:true,border:false">
 			<div title="权限管理" style="padding:10px;">content1</div>
 			<div title="菜单管理" data-options="selected:true" style="padding:10px;">
-				<ul id="tt" class="easyui-tree" url="getMenu.action">
+				<ul id="tt" class="easyui-tree" url="${pageContext.request.contextPath}/getMenu.action">
 				</ul>
 			</div>
 			<div title="流程管理" style="padding:10px">content3</div>

@@ -15,4 +15,5 @@ public interface BaseDaoI<T> {
 	public void saveOrUpdate(T o);
 	public List<T> query(String queryString,Object[] values,int page,int row);
 	public int count(String queryString,Object[] values);
+	public List<T> query(final String queryString);
 }

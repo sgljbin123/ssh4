@@ -70,7 +70,7 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel>{
 			try {
 				userService.saveUser(userModel);
 				userMap.put("success", true);
-				userMap.put("message", "ע注册成功");
+				userMap.put("message", "注册成功");
 
 			} catch (Exception e) {
 				e.printStackTrace();

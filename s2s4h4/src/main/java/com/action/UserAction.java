@@ -91,7 +91,7 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel>{
 			userMap.put("message", "账号或密码错误，请重新登陆");
 		} else {
 				userMap.put("success", true);
-				userMap.put("message", "登陆 成功，正在跳转页面");
+				userMap.put("message", "登陆成功，正在跳转页面");
 		}
 		writeToJSON(userMap);
 	}

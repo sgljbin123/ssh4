@@ -18,27 +18,27 @@ import javax.persistence.Table;
  * UtMemu entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "ut_memu", catalog = "sshe")
-public class UtMemu implements java.io.Serializable {
+@Table(name = "ut_menu")
+public class UtMenu implements java.io.Serializable {
 
 	// Fields
 
 	private Integer id;
-	private UtMemu utMemu;
+	private UtMenu utMemu;
 	private String text;
 	private String icon;
 	private String url;
-	private Set<UtMemu> utMemus = new HashSet<UtMemu>(0);
+	private Set<UtMenu> utMemus = new HashSet<UtMenu>(0);
 
 	// Constructors
 
 	/** default constructor */
-	public UtMemu() {
+	public UtMenu() {
 	}
 
 	/** full constructor */
-	public UtMemu(UtMemu utMemu, String text, String icon, String url,
-			Set<UtMemu> utMemus) {
+	public UtMenu(UtMenu utMemu, String text, String icon, String url,
+			Set<UtMenu> utMemus) {
 		this.utMemu = utMemu;
 		this.text = text;
 		this.icon = icon;
@@ -60,11 +60,11 @@ public class UtMemu implements java.io.Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "pid")
-	public UtMemu getUtMemu() {
+	public UtMenu getUtMemu() {
 		return this.utMemu;
 	}
 
-	public void setUtMemu(UtMemu utMemu) {
+	public void setUtMemu(UtMenu utMemu) {
 		this.utMemu = utMemu;
 	}
 
@@ -96,11 +96,11 @@ public class UtMemu implements java.io.Serializable {
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "utMemu")
-	public Set<UtMemu> getUtMemus() {
+	public Set<UtMenu> getUtMemus() {
 		return this.utMemus;
 	}
 
-	public void setUtMemus(Set<UtMemu> utMemus) {
+	public void setUtMemus(Set<UtMenu> utMemus) {
 		this.utMemus = utMemus;
 	}
 

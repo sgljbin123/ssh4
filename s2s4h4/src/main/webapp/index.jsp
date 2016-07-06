@@ -17,12 +17,9 @@
 	src="jslib/jquery-easyui-1.4.5/jquery.easyui.min.js"></script>
 <script type="text/javascript"
 	src="jslib/jquery-easyui-1.4.5/locale/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript"
-	src="jslib/util/syutil.js"></script>
-<jsp:include page="jsp/user/loggin.jsp"></jsp:include>
-<jsp:include page="jsp/user/reg.jsp"></jsp:include>
+<script type="text/javascript" src="jslib/util/syutil.js"></script>
 <script type="text/javascript">
-
+	
 </script>
 </head>
 <body class="easyui-layout">
@@ -33,8 +30,11 @@
 		<div class="easyui-accordion" data-options="fit:true,border:false">
 			<div title="权限管理" style="padding:10px;">content1</div>
 			<div title="菜单管理" data-options="selected:true" style="padding:10px;">
-				content2</div>
+				<ul id="tt" class="easyui-tree" url="getMenu.action">
+				</ul>
+			</div>
 			<div title="流程管理" style="padding:10px">content3</div>
+
 		</div>
 	</div>
 	<div data-options="region:'south',border:false"
@@ -64,8 +64,9 @@
 			</div>
 		</div>
 	</div>
-	
+	<jsp:include page="jsp/user/loggin.jsp"></jsp:include>
+	<jsp:include page="jsp/user/reg.jsp"></jsp:include>
 
-	
+
 </body>
 </html>

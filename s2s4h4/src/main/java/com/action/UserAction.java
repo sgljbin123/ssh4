@@ -1,6 +1,5 @@
 package com.action;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +12,8 @@ import com.drivenModel.UserModel;
 import com.model.UtUser;
 import com.opensymphony.xwork2.ModelDriven;
 import com.service.UserServiceI;
-import com.utils.EncryptAndDecrypt;
+
+
 
 
 public class UserAction extends BaseAction implements ModelDriven<UserModel>{
@@ -57,8 +57,8 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel>{
 
 	private final static Logger logger = Logger.getLogger(UserAction.class);
 
-	@Action(value = "saveUser")
-	public void saveUser() throws IOException {
+	@Action("saveUser")
+	public void saveUser() {
 		UtUser u = new UtUser();
 		Map<String , Object> userMap = new HashMap<>();
 		u = userService.findUser(userModel.getIndex_reg_name(),userModel.getIndex_reg_password());
@@ -81,8 +81,8 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel>{
 		writeToJSON(userMap);
 	}
 
-	@Action(value = "userLoggin")
-	public void userLoggin() throws IOException {
+	@Action("userLoggin")
+	public void userLoggin() {
 		UtUser u = new UtUser();
 		u = userService.findUser(userModel.getIndex_loggin_name(),userModel.getIndex_loggin_password());
 		Map<String , Object> userMap = new HashMap<>();

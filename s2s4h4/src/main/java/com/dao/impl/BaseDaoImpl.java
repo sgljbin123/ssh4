@@ -70,11 +70,10 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDaoI<T> {
 	@Override
 	public List<T> query(final String queryString, final Object[] values, final int page, final int row) {
 		// TODO Auto-generated method stub
-		 @SuppressWarnings({ "unchecked", "rawtypes" })
-		List list = getHibernateTemplate().execute(new HibernateCallback()
+		List list = getHibernateTemplate().execute(new HibernateCallback<List>()
 		    {
 		     @Override
-		 public Object doInHibernate(Session session) {
+		 public List<T> doInHibernate(Session session) {
 		       Query query = session.createQuery(queryString);
 		         query.setFirstResult((page-1)*row);
 		       query.setMaxResults(row);

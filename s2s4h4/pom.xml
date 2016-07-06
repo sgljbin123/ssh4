@@ -63,8 +63,8 @@
 			<version>2.5.1</version>
 			<exclusions>
 				<exclusion>
-					<groupId> javassist</groupId>
-					<artifactId> javassist</artifactId>
+					<groupId>javassist</groupId>
+					<artifactId>javassist</artifactId>
 				</exclusion>
 			</exclusions>
 
@@ -103,7 +103,6 @@
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
-					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 			<plugin>

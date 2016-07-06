@@ -65,17 +65,17 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel>{
 		logger.info(userModel.getIndex_reg_name());
 		if (u != null) {
 			userMap.put("success", false);
-			userMap.put("message", "ÕËºÅÒÑ´æÔÚ£¬×¢²áÊ§°Ü");
+			userMap.put("message", "ç”¨æˆ·å·²å­˜åœ¨ï¼Œæ³¨å†Œå¤±è´¥");
 		} else {
 			try {
 				userService.saveUser(userModel);
 				userMap.put("success", true);
-				userMap.put("message", "×¢²á³É¹¦");
+				userMap.put("message", "×¢æ³¨å†ŒæˆåŠŸ");
 
 			} catch (Exception e) {
 				e.printStackTrace();
 				userMap.put("success", false);
-				userMap.put("message", "ÏµÍ³Òì³££¬×¢²áÊ§°Ü£¬ÇëÉÔºóÔÙÊÔ");
+				userMap.put("message", "ç³»ç»Ÿé”™è¯¯ï¼Œæ³¨å†Œå¤±è´¥ï¼Œè¯·è”ç³»ç®¡ç†å‘˜");
 			}
 		}
 		writeToJSON(userMap);
@@ -88,10 +88,10 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel>{
 		Map<String , Object> userMap = new HashMap<>();
 		if (u == null) {
 			userMap.put("success", false);
-			userMap.put("message", "ÕËºÅ»òÃÜÂë²»ÕıÈ·£¬ÇëÖØĞÂÊäÈë");
+			userMap.put("message", "è´¦å·æˆ–å¯†ç é”™è¯¯ï¼Œè¯·é‡æ–°ç™»é™†");
 		} else {
 				userMap.put("success", true);
-				userMap.put("message", "µÇÂ½³É¹¦£¬ÕıÔÚÌø×ªÒ³Ãæ");
+				userMap.put("message", "ç™»é™† æˆåŠŸï¼Œæ­£åœ¨è·³è½¬é¡µé¢");
 		}
 		writeToJSON(userMap);
 	}

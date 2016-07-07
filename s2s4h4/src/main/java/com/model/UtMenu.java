@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- * UtMemu entity. @author MyEclipse Persistence Tools
+ * UtMenu entity. @author MyEclipse Persistence Tools
  */
 @Entity
 @Table(name = "ut_menu")
@@ -23,16 +23,12 @@ public class UtMenu implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private Integer id;
-	private UtMenu utMemu;
+	private UtMenu utMenu;
 	private String text;
 	private String icon;
 	private String url;
-	private Set<UtMenu> utMemus = new HashSet<UtMenu>(0);
+	private Set<UtMenu> utMenus = new HashSet<UtMenu>(0);
 
 	// Constructors
 
@@ -41,13 +37,13 @@ public class UtMenu implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public UtMenu(UtMenu utMemu, String text, String icon, String url,
-			Set<UtMenu> utMemus) {
-		this.utMemu = utMemu;
+	public UtMenu(UtMenu utMenu, String text, String icon, String url,
+			Set<UtMenu> utMenus) {
+		this.utMenu = utMenu;
 		this.text = text;
 		this.icon = icon;
 		this.url = url;
-		this.utMemus = utMemus;
+		this.utMenus = utMenus;
 	}
 
 	// Property accessors
@@ -64,12 +60,12 @@ public class UtMenu implements java.io.Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "pid")
-	public UtMenu getUtMemu() {
-		return this.utMemu;
+	public UtMenu getUtMenu() {
+		return this.utMenu;
 	}
 
-	public void setUtMemu(UtMenu utMemu) {
-		this.utMemu = utMemu;
+	public void setUtMenu(UtMenu utMenu) {
+		this.utMenu = utMenu;
 	}
 
 	@Column(name = "text", length = 100)
@@ -99,13 +95,13 @@ public class UtMenu implements java.io.Serializable {
 		this.url = url;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "utMemu")
-	public Set<UtMenu> getUtMemus() {
-		return this.utMemus;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "utMenu")
+	public Set<UtMenu> getUtMenus() {
+		return this.utMenus;
 	}
 
-	public void setUtMemus(Set<UtMenu> utMemus) {
-		this.utMemus = utMemus;
+	public void setUtMenus(Set<UtMenu> utMenus) {
+		this.utMenus = utMenus;
 	}
 
 }

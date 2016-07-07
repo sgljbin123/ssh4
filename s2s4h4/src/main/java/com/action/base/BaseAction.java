@@ -2,6 +2,7 @@ package com.action.base;
 
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -14,6 +15,8 @@ import com.alibaba.fastjson.JSON;
 @Action("baseAction")
 public  class BaseAction {
 
+	
+	private Logger logger = Logger.getLogger(BaseAction.class);
 	public void writeToJSON(Object object) {
 		try {
 //			String json = JSON.toJSONString(object);

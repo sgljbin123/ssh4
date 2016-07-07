@@ -18,7 +18,7 @@ public class TestService {
 	@Test
 	public void test(){
 		ApplicationContext ac = new ClassPathXmlApplicationContext(new String[]{"classpath:spring.xml"});
-		MenuServiceI menuService = (MenuServiceI) ac.getBean("menuService");
+//		MenuServiceI menuService = (MenuServiceI) ac.getBean("menuService");
 	
 //		
 	}

@@ -1,5 +1,6 @@
 package com.drivenModel;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,6 +14,20 @@ public class MenuModel {
 	private String icon;
 	private String url;
 	private Set<UtMenu> utMemus = new HashSet<UtMenu>(0);
+	private String state;
+	private ArrayList<MenuModel> children;
+	public String getState() {
+		return state;
+	}
+	public ArrayList<MenuModel> getChildren() {
+		return children;
+	}
+	public void setChildren(ArrayList<MenuModel> children) {
+		this.children = children;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
 	public Integer getId() {
 		return id;
 	}

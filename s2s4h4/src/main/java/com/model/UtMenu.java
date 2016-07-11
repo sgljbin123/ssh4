@@ -23,7 +23,7 @@ public class UtMenu implements java.io.Serializable {
 
 	// Fields
 
-	private Integer id;
+	private int id;
 	private UtMenu utMenu;
 	private String text;
 	private String icon;
@@ -54,7 +54,7 @@ public class UtMenu implements java.io.Serializable {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

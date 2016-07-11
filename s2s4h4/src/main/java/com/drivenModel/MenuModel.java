@@ -10,17 +10,18 @@ public class MenuModel {
 
 	private Integer id;
 	private Integer pid;
+	private String ptext;
 	private String text;
 	private String icon;
 	private String url;
 	private Set<UtMenu> children = new HashSet<UtMenu>(0);
-	private String state;
-	public String getState() {
-		return state;
+	public String getPtext() {
+		return ptext;
 	}
-	public void setState(String state) {
-		this.state = state;
+	public void setPtext(String ptext) {
+		this.ptext = ptext;
 	}
+
 	public Integer getId() {
 		return id;
 	}

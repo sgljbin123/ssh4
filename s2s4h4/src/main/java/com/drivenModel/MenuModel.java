@@ -13,17 +13,10 @@ public class MenuModel {
 	private String text;
 	private String icon;
 	private String url;
-	private Set<UtMenu> utMemus = new HashSet<UtMenu>(0);
+	private Set<UtMenu> children = new HashSet<UtMenu>(0);
 	private String state;
-	private ArrayList<MenuModel> children;
 	public String getState() {
 		return state;
-	}
-	public ArrayList<MenuModel> getChildren() {
-		return children;
-	}
-	public void setChildren(ArrayList<MenuModel> children) {
-		this.children = children;
 	}
 	public void setState(String state) {
 		this.state = state;
@@ -58,12 +51,13 @@ public class MenuModel {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	public Set<UtMenu> getUtMemus() {
-		return utMemus;
+	public Set<UtMenu> getChildren() {
+		return children;
 	}
-	public void setUtMemus(Set<UtMenu> utMemus) {
-		this.utMemus = utMemus;
+	public void setChildren(Set<UtMenu> children) {
+		this.children = children;
 	}
+
 	
 	
 }

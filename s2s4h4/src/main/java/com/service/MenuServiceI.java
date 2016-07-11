@@ -8,7 +8,6 @@ import com.model.UtMenu;
 public interface MenuServiceI {
 
 	public void addMenu();
-	public List<UtMenu> loadMenu();
+	public List<MenuModel> loadMenu();
 	public List<UtMenu> loadChildMenu(int pid);
-	public List<MenuModel> getTreeNode(Integer id);
 }

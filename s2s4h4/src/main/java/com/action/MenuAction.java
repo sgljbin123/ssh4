@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.action.base.BaseAction;
 import com.drivenModel.MenuModel;
-import com.model.UtMenu;
 import com.opensymphony.xwork2.ModelDriven;
 import com.service.MenuServiceI;
 
@@ -28,7 +27,8 @@ public class MenuAction extends BaseAction implements ModelDriven<MenuModel> {
 	
 	private Logger logger = Logger.getLogger(MenuAction.class);
 	
-	MenuModel menuModel = new MenuModel();
+	private MenuModel menuModel = new MenuModel();
+	
 
 	@Override
 	public MenuModel getModel() {
@@ -38,9 +38,8 @@ public class MenuAction extends BaseAction implements ModelDriven<MenuModel> {
 	@Action(value = "getMenu")
 	public void addMenu() {
 //		logger.info(menuModel.getId());
-		List<UtMenu> list = menuService.loadMenu();
-//		List<MenuModel> list = menuService.getTreeNode(menuModel.getId());
-		writeToJSON(list);
+		
+		writeToJSON(menuService.loadMenu());
 	}
 	public void loadChildMenu(){
 		

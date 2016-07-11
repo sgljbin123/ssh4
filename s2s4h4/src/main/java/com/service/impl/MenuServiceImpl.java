@@ -1,10 +1,7 @@
 package com.service.impl;
 
-import java.awt.Menu;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.BeanUtils;
@@ -39,10 +36,13 @@ public class MenuServiceImpl implements MenuServiceI {
 	}
 
 	@Override
-	public List<UtMenu> loadMenu() {
+	public List<MenuModel> loadMenu() {
 		// TODO Auto-generated method stub
 		String queryString = "from UtMenu t where t.utMenu is null";
-		return menuDao.query(queryString);
+		List<UtMenu> menuList = menuDao.query(queryString);
+		List<MenuModel> menuModelList = new ArrayList<MenuModel>();
+		BeanUtils.copyProperties(menuList, menuModelList);
+		return menuModelList;
 	}
 
 	@Override
@@ -52,35 +52,6 @@ public class MenuServiceImpl implements MenuServiceI {
 		String value = Integer.toString(pid);
 		String[] values = new String[] { value };
 		return menuDao.findList(queryString, values);
-	}
-
-	public List<MenuModel> getTreeNode(Integer id) {
-		List<MenuModel> nl = new ArrayList<MenuModel>();
-		String[] map = null;
-		String hql = null;
-		String pid = Integer.toString(id);
-		if (pid == null || pid.equals("")) { // 显示根节点
-			hql = "from UtMenu t where t.utMenu is null ";
-		} else { // 查询当前id下的子节点
-			hql = "from UtMenu t where t.utMenu.id = ? ";
-			map=new String[]{pid};
-		}
-		List<UtMenu> list = menuDao.findList(hql, map);
-		if (list != null && list.size() > 0) {
-			for (UtMenu t : list) {
-				MenuModel m = new MenuModel();
-				BeanUtils.copyProperties(t, m);
-				Set<UtMenu> set = t.getUtMenus();
-				// 判断该节点是否有子节点
-				if (set != null && !set.isEmpty()) {
-					m.setState("closed");
-				} else {
-					m.setState("open");
-				}
-				nl.add(m);
-			}
-		}
-		return nl;
 	}
 
 }

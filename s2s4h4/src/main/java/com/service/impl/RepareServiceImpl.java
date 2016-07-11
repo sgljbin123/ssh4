@@ -29,10 +29,14 @@ public class RepareServiceImpl implements RepareServiceI {
 		UtMenu root = new UtMenu();
 		root.setText("首页");
 		UtMenu menu = new UtMenu();
-		menu.setText("菜单功能");
-		menu.setUtMemu(root);
+		menu.setText("系统管理");
+		menu.setUtMenu(root);
 		menuDao.saveOrUpdate(root);
 		menuDao.saveOrUpdate(menu);
+		UtMenu menu1 = new UtMenu();
+		menu1.setText("用户管理");
+		menu1.setUtMenu(menu);
+		menuDao.saveOrUpdate(menu1);
 	}
 
 	

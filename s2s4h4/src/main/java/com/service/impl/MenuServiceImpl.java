@@ -2,7 +2,6 @@ package com.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +35,32 @@ public class MenuServiceImpl implements MenuServiceI {
 	}
 
 	@Override
-	public List<MenuModel> loadMenu() {
+	public List<MenuModel> loadMenu(int pid) {
 		// TODO Auto-generated method stub
-		String queryString = "from UtMenu t where t.utMenu is null";
-		List<UtMenu> menuList = menuDao.query(queryString);
+		String queryString = null;
+		List<UtMenu> menuList = new ArrayList<UtMenu>();
+		if(pid == 0){
+			queryString = "from UtMenu t where t.utMenu is null";
+			menuList = menuDao.query(queryString);
+		}else{
+			queryString = "from UtMenu t where t.utMenu.id = ?";
+			menuList = menuDao.findList(queryString, new Integer[]{pid});
+		}
+		
+		
 		List<MenuModel> menuModelList = new ArrayList<MenuModel>();
-		BeanUtils.copyProperties(menuList, menuModelList);
+		if (menuList != null && menuList.size() > 0) {
+			for (UtMenu menu : menuList) {
+				MenuModel model = new MenuModel();
+				BeanUtils.copyProperties(menu, model);
+				if(menu.getUtMenus()!=null&&!menu.getUtMenus().isEmpty()){
+				model.setState("closed");
+				}else{
+					model.setState("open");
+				}
+				menuModelList.add(model);
+			}
+		}
 		return menuModelList;
 	}
 

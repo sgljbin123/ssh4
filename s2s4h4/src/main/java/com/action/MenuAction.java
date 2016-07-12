@@ -38,8 +38,9 @@ public class MenuAction extends BaseAction implements ModelDriven<MenuModel> {
 	@Action(value = "getMenu")
 	public void addMenu() {
 //		logger.info(menuModel.getId());
-		
-		writeToJSON(menuService.loadMenu());
+		logger.info(menuModel.getId());
+		int pid = menuModel.getId();
+		writeToJSON(menuService.loadMenu(pid));
 	}
 	public void loadChildMenu(){
 		

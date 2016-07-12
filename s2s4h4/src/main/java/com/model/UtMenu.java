@@ -50,19 +50,20 @@ public class UtMenu implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
-	public Integer getId() {
-		return this.id;
+	public int getId() {
+		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "pid")
 	public UtMenu getUtMenu() {
 		return this.utMenu;
 	}
+
+	
 
 	public void setUtMenu(UtMenu utMenu) {
 		this.utMenu = utMenu;

@@ -1,20 +1,22 @@
 package com.drivenModel;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-
-import com.model.UtMenu;
 
 public class MenuModel {
 
-	private Integer id;
-	private Integer pid;
+	private int id;
+	private String pid;
 	private String ptext;
 	private String text;
 	private String icon;
 	private String url;
-	private Set<UtMenu> children = new HashSet<UtMenu>(0);
+	private String state;
+	
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
 	public String getPtext() {
 		return ptext;
 	}
@@ -22,16 +24,17 @@ public class MenuModel {
 		this.ptext = ptext;
 	}
 
-	public Integer getId() {
+	
+	public int getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
-	public Integer getPid() {
+	public String getPid() {
 		return pid;
 	}
-	public void setPid(Integer pid) {
+	public void setPid(String pid) {
 		this.pid = pid;
 	}
 	public String getText() {
@@ -51,12 +54,6 @@ public class MenuModel {
 	}
 	public void setUrl(String url) {
 		this.url = url;
-	}
-	public Set<UtMenu> getChildren() {
-		return children;
-	}
-	public void setChildren(Set<UtMenu> children) {
-		this.children = children;
 	}
 
 	

@@ -9,5 +9,4 @@ public interface MenuServiceI {
 
 	public void addMenu();
 	public List<MenuModel> loadMenu(int pid);
-	public List<UtMenu> loadChildMenu(int pid);
 }

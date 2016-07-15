@@ -108,6 +108,20 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDaoI<T> {
 		    });
 	     return list;
 	}
+	@Override
+	public List<T> findByParam(String queryString,String[] paramNames,Object[] values) {
+		// TODO Auto-generated method stub
+		
+		return (List<T>) getHibernateTemplate().findByNamedParam(queryString, paramNames, values);
+	}
+	
+	public List<T> findByParam(String queryString,String paramName,Object value){
+		return (List<T>) getHibernateTemplate().findByNamedParam(queryString, paramName, value);
+	}
+	
+	public List<T> findByExample(T o){
+		return getHibernateTemplate().findByExample(o);
+	}
 
 }
 

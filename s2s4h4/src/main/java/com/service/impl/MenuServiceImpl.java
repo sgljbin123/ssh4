@@ -43,8 +43,8 @@ public class MenuServiceImpl implements MenuServiceI {
 			queryString = "from UtMenu t where t.utMenu is null";
 			menuList = menuDao.query(queryString);
 		}else{
-			queryString = "from UtMenu t where t.utMenu.id = ?";
-			menuList = menuDao.findList(queryString, new Integer[]{pid});
+			queryString = "from UtMenu t where t.utMenu.id = :id";
+			menuList = menuDao.findByParam(queryString,new String[]{"id"}, new Integer[]{pid});
 		}
 		
 		
@@ -62,15 +62,6 @@ public class MenuServiceImpl implements MenuServiceI {
 			}
 		}
 		return menuModelList;
-	}
-
-	@Override
-	public List<UtMenu> loadChildMenu(int pid) {
-		// TODO Auto-generated method stub
-		String queryString = "from UtMenu t where t.utMenu = ?";
-		String value = Integer.toString(pid);
-		String[] values = new String[] { value };
-		return menuDao.findList(queryString, values);
 	}
 
 }
